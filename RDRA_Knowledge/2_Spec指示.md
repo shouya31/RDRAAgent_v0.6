@@ -25,9 +25,9 @@
 作成したビジネスルールは「2_RDRASpec」フォルダーに「business_rule.md」名で出力する
 
 /*
-    仕様のストーリー作成と検証
+    仕様の妥当性検証
 */
-# phase2: 仕様のストーリーを作成する
+# phase2: 仕様の妥当性を検証する
 
 ## 検証対象
 「2_RDRASpec」フォルダー配下の以下のファイルを読込み、検証する
@@ -38,10 +38,7 @@
 ## 事前理解
 - 「1_RDRA/Validation/RDRA説明.md」を読込、個別のストーリーの違いを理解する
 
-## step1:ストーリーの作成
-- 「RDRA_Knowledge/2_RDRASpec/specScenarioStory.md」を実行し、「2_RDRASpec/Validation」に出力する
-
-## step2: 仕様の妥当性検証
+## Phase1の成果物の妥当性検証
 
 ### phase1で作成した以下のファイルを十分に理解してください
 - 2_RDRASpec/論理データモデル.md
@@ -49,22 +46,8 @@
 - 2_RDRASpec/business_rule.md
 - 2_RDRASpec/Validation/Spec妥当性検証ストーリー.md
 
-### ストーリーをベースにした妥当性検証
+### RDRA説明をベースにした妥当性検証
 - 「RDRA_Knowledge/2_RDRASpec/specValidation.md」を実行し、「Spec妥当性検証結果.md」の名前で「2_RDRASpec/Validation」に出力する
-
-/*
-    prototype作成
-*/
-# phase3: プロトタイプ環境作成
-
-## 「2_RDRASpec/論理データモデル.md」を読込み深く理解する
-
-## プロトタイプ用データの作成
-- Step1: 「RDRA_Knowledge/2_RDRASpec/24_actor.md」を実行し、「youser.json」の名前で「2_RDRASpec」に出力する
-- Step2: 「RDRA_Knowledge/2_RDRASpec/25_prototype_data.md」を実行し、「prototype_data.json」という名前で「2_RDRASpec」に出力する
-
-# 指示されたPhaseを実行してください
-実行するときは毎回、前提を理解してから実行する
 
 Think Hard
 

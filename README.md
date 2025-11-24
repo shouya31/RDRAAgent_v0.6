@@ -12,8 +12,6 @@ RDRAAgentは、RDRA（Relationship Driven Requirement Analysis）手法を用い
 Zipでダウンロードする：
 「Download Zip」を選択する
 
-### 部分的にJavaScriptを使っているので、Node.jsのインストールが必要です
-
 ### 方法2: リポジトリをクローンして直接使用（開発・カスタマイズ向け）
 
 開発やカスタマイズを行う場合は、リポジトリを直接クローンします：
@@ -25,6 +23,7 @@ node menu.js
 ```
 
 **この方法の特徴：**
+- Node.jsのインストールが必要です
 - `npm install` は不要（外部依存関係がないため）
 - ダウンロードかクローンするだけですぐに使用可能
 
@@ -33,6 +32,7 @@ node menu.js
 RDRAAgent0.6/
 ├── RDRA_Knowledge/       # ナレッジベース
 ├── .claude/              # Claude Code設定
+├── .cursor/rules/rdrarules # Curser設定
 ├── Samples/              # サンプルプロジェクト
 ├── 初期要望.txt
 └── 妥当性検証環境.csv
