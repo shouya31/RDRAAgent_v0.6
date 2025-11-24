@@ -26,7 +26,9 @@
       "Read(RDRA_Knowledge/helper_tools/web_tool/**)",
       "Read(RDRA_Knowledge/0_RDRAZeroOne/**)",
       "Read(RDRA_Knowledge/1_RDRA/**)",
-      "Read(RDRA_Knowledge/2_RDRASpec/**)"
+      "Read(RDRA_Knowledge/2_RDRASpec/**)",
+      "Bash(dir /D/SynologyDrive2/Project/2025Prj/RDRAAgent_product/RDRAAgent_v0.6 /B)",
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": []

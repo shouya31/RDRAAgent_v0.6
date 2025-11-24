@@ -50,7 +50,6 @@ https://ui.shadcn.com/docs/components
 - 22_ui.md:ユースケースと画面の関係から画面のUI定義を生成する方法を記述したファイル
 - 23_business_rule.md:ビジネスルールモジュールを定義する方法を記述したファイル
 - specValidation.md:仕様の妥当性検証方法を記述したファイル
-- specScenarioStory.md:仕様のストーリー作成方法を記述したファイル
 ## 「2_RDRASpec/Validation」フォルダー
 論理データとprototypeの生成物が保持される
 
