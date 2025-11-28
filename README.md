@@ -7,18 +7,36 @@ RDRAAgentは、RDRA（Relationship Driven Requirement Analysis）手法を用い
 
 ## インストール方法
 
-### 方法: GitHubから直接ダウンロード（推奨）
+### 方法1: npmでインストール（推奨・最も簡単）
 
-Zipでダウンロードする：
-「Download Zip」を選択する
+```bash
+# グローバルインストール
+npm install -g rdra-agent
 
-### 方法2: リポジトリをクローンして直接使用（開発・カスタマイズ向け）
+# または yarn
+yarn global add rdra-agent
+
+# プロジェクトローカルにインストール
+npm install rdra-agent
+# または
+yarn add rdra-agent
+```
+
+### 方法2: GitHubから直接インストール
+
+```bash
+npm install github:shouya31/RDRAAgent_v0.6
+# または
+yarn add github:shouya31/RDRAAgent_v0.6
+```
+
+### 方法3: リポジトリをクローンして直接使用（開発・カスタマイズ向け）
 
 開発やカスタマイズを行う場合は、リポジトリを直接クローンします：
 
 ```bash
-git clone https://github.com/kanzaki/RDRAAgent0.6.git
-cd RDRAAgent0.6
+git clone https://github.com/shouya31/RDRAAgent_v0.6.git
+cd RDRAAgent_v0.6
 node menu.js
 ```
 
@@ -26,17 +44,6 @@ node menu.js
 - Node.jsのインストールが必要です
 - `npm install` は不要（外部依存関係がないため）
 - ダウンロードかクローンするだけですぐに使用可能
-
-**含まれるフォルダー構造：**
-```
-RDRAAgent0.6/
-├── RDRA_Knowledge/       # ナレッジベース
-├── .claude/              # Claude Code設定
-├── .cursor/rules/rdrarules # Curser設定
-├── Samples/              # サンプルプロジェクト
-├── 初期要望.txt
-└── 妥当性検証環境.csv
-```
 
 ## 「初期要望.txt」と「妥当性検証環境.csv」の二つを入力する
 ### 初期要望.txt：RDRA定義のための初期の要望のリスト
@@ -66,7 +73,58 @@ RDRAAgent0.6/
 - **Node.js**: バージョン18以上推奨
 - **Model**:Claude code(default)
 
-## メニュー起動
+## クイックスタート（npm/yarnインストール後）
+
+### 新しい方法：任意のディレクトリでRDRA定義を実行
+
+```bash
+# プロジェクトディレクトリを指定して実行
+rdra ./my-rdra-project
+
+# 初回実行時、初期要望.txtのテンプレートが自動作成されます
+# テンプレートを編集後、再度実行
+rdra ./my-rdra-project
+```
+
+### 複数プロジェクトの管理
+
+```bash
+# プロジェクトA
+rdra ./rdra-projects/system-a
+
+# プロジェクトB
+rdra ./rdra-projects/system-b
+
+# プロジェクトC
+rdra ./rdra-projects/system-c
+```
+
+**メリット：**
+- 複数のRDRAプロジェクトを別々のディレクトリで管理できる
+- プロジェクトごとに初期要望や結果を分離できる
+- 既存プロジェクトに影響を与えない
+
+### ディレクトリ構造
+
+```
+your-project/
+├── rdra-projects/
+│   ├── system-a/
+│   │   ├── 初期要望.txt          # プロジェクトA の要望
+│   │   ├── 0_RDRAZeroOne/        # 中間結果
+│   │   └── 1_RDRA/               # 最終RDRA定義
+│   ├── system-b/
+│   │   ├── 初期要望.txt          # プロジェクトB の要望
+│   │   └── 1_RDRA/
+│   └── system-c/
+│       ├── 初期要望.txt
+│       └── 1_RDRA/
+└── (あなたのプロジェクトファイル)
+```
+
+## 従来の方法：メニュー起動
+
+クローンまたはダウンロードした場合：
 
 ```bash
 node menu.js

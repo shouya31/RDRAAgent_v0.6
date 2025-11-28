@@ -1,10 +1,10 @@
 {
   "name": "rdra-agent",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "RDRA (Relationship Driven Requirement Analysis) 要件定義支援ツール",
   "main": "menu.js",
   "bin": {
-    "rdra": "./menu.js"
+    "rdra": "./rdra-cli.js"
   },
   "scripts": {
     "start": "node menu.js"
@@ -18,22 +18,23 @@
     "要件定義",
     "RDRA"
   ],
-  "author": "kanzaki",
+  "author": "shouya31",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kanzaki/RDRAAgent_v0.6.git"
+    "url": "https://github.com/shouya31/RDRAAgent_v0.6.git"
   },
   "bugs": {
-    "url": "https://github.com/kanzaki/RDRAAgent_v0.6/issues"
+    "url": "https://github.com/shouya31/RDRAAgent_v0.6/issues"
   },
-  "homepage": "https://github.com/kanzaki/RDRAAgent_v0.6#readme",
+  "homepage": "https://github.com/shouya31/RDRAAgent_v0.6#readme",
   "engines": {
     "node": ">=18.0.0"
   },
   "files": [
     "RDRA_Knowledge/",
     "menu.js",
+    "rdra-cli.js",
     "README.md",
     "LICENSE"
   ]
