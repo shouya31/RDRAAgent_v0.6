@@ -6,6 +6,12 @@ node_modules/
 # 1_RDRA/
 # 2_RDRASpec/
 
+# npm
+*.tgz
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
 # ログファイル
 *.log
 *.err

@@ -1,0 +1,41 @@
+# 出力フォルダ（生成物なので公開不要）
+0_RDRAZeroOne/
+1_RDRA/
+2_RDRASpec/
+
+# サンプル（サイズ削減のため除外可能だが、有用なので含める場合はコメントアウト）
+# Samples/
+
+# プロジェクト固有ファイル
+初期要望.txt
+妥当性検証環境.csv
+運転者台帳.txt
+
+# Git関連
+.git/
+.gitignore
+.gitattributes
+
+# エディタ関連
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS関連
+.DS_Store
+Thumbs.db
+
+# Claude/Cursor設定
+.claude/
+.cursor/
+CLAUDE.md
+
+# テスト・開発用
+node_modules/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
