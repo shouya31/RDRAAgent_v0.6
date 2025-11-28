@@ -1,6 +1,6 @@
 {
   "name": "rdra-agent",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "RDRA (Relationship Driven Requirement Analysis) 要件定義支援ツール",
   "main": "menu.js",
   "bin": {

@@ -109,32 +109,42 @@ if (!fs.existsSync(initialRequestPath)) {
 // RDRAAgentのインストールディレクトリを取得
 const rdraAgentDir = __dirname;
 
-// RDRA_Knowledgeとmenu.jsへのシンボリックリンクを作成
-const linksToCreate = [
-    { src: path.join(rdraAgentDir, 'RDRA_Knowledge'), dest: path.join(workDir, 'RDRA_Knowledge') },
-    { src: path.join(rdraAgentDir, 'menu.js'), dest: path.join(workDir, 'menu.js') }
-];
-
 console.log('');
 console.log('🔗 RDRAAgentをセットアップ中...');
 
-linksToCreate.forEach(({ src, dest }) => {
-    // 既存のシンボリックリンクまたはファイルを削除
-    if (fs.existsSync(dest)) {
-        const stats = fs.lstatSync(dest);
-        if (stats.isSymbolicLink()) {
-            fs.unlinkSync(dest);
-        }
-    }
+// RDRA_Knowledgeをコピー（シンボリックリンクでは動作しないため）
+const rdraKnowledgeSrc = path.join(rdraAgentDir, 'RDRA_Knowledge');
+const rdraKnowledgeDest = path.join(workDir, 'RDRA_Knowledge');
+
+// 既存のRDRA_Knowledgeを削除
+if (fs.existsSync(rdraKnowledgeDest)) {
+    fs.rmSync(rdraKnowledgeDest, { recursive: true, force: true });
+}
+
+// RDRA_Knowledgeを再帰的にコピー
+function copyRecursive(src, dest) {
+    const stats = fs.statSync(src);
     
-    // シンボリックリンクを作成
-    try {
-        fs.symlinkSync(src, dest);
-    } catch (error) {
-        console.error(`❌ シンボリックリンク作成エラー: ${error.message}`);
-        process.exit(1);
+    if (stats.isDirectory()) {
+        if (!fs.existsSync(dest)) {
+            fs.mkdirSync(dest, { recursive: true });
+        }
+        
+        const files = fs.readdirSync(src);
+        files.forEach(file => {
+            copyRecursive(path.join(src, file), path.join(dest, file));
+        });
+    } else {
+        fs.copyFileSync(src, dest);
     }
-});
+}
+
+copyRecursive(rdraKnowledgeSrc, rdraKnowledgeDest);
+
+// menu.jsをコピー
+const menuSrc = path.join(rdraAgentDir, 'menu.js');
+const menuDest = path.join(workDir, 'menu.js');
+fs.copyFileSync(menuSrc, menuDest);
 
 console.log('✅ セットアップ完了');
 console.log('');
@@ -152,14 +162,17 @@ const menuProcess = spawn('node', ['menu.js'], {
 
 // プロセス終了時のクリーンアップ
 const cleanup = () => {
-    linksToCreate.forEach(({ dest }) => {
-        if (fs.existsSync(dest)) {
-            const stats = fs.lstatSync(dest);
-            if (stats.isSymbolicLink()) {
-                fs.unlinkSync(dest);
-            }
-        }
-    });
+    // RDRA_Knowledgeとmenu.jsを削除
+    const rdraKnowledgeDest = path.join(workDir, 'RDRA_Knowledge');
+    const menuDest = path.join(workDir, 'menu.js');
+    
+    if (fs.existsSync(rdraKnowledgeDest)) {
+        fs.rmSync(rdraKnowledgeDest, { recursive: true, force: true });
+    }
+    
+    if (fs.existsSync(menuDest)) {
+        fs.unlinkSync(menuDest);
+    }
 };
 
 menuProcess.on('close', (code) => {
